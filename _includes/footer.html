@@ -31,6 +31,9 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
 
+<!-- weixin share JavaScript -->
+<script src="{{ "/js/jweixin.js " | prepend: site.baseurl }}"></script>
+
 <!-- Service Worker -->
 {% if site.service-worker %}
 <script src="{{ "/js/snackbar.js " | prepend: site.baseurl }}"></script>
@@ -67,7 +70,32 @@
     </script>
     <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
 -->
+<script>
+    
+    wx.config({
+        debug: true, // 开启调试模式,若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        "signature":"c5d681a93577e90cafe08429818940f326285216",
+        "appId":"wxfdfc3169fc66486a",
+        "nonceStr":"c523a9623c784de38f27cd9fe9afca4d",
+        "timestamp":1557389914,
+        jsApiList: [] // 必填，需要使用的JS接口列表
+    });
+    wx.ready(function(){
+    
 
+        wx.updateAppMessageShareData({ 
+            title: '', // 分享标题
+            desc: '', // 分享描述
+            link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '', // 分享图标
+            success: function () {
+            // 设置成功
+            }
+        })
+
+    });
+
+</script>
 
 
 {% if page.title == 'Archive' %}
